@@ -79,7 +79,7 @@ document.getElementById("bleBtn").onclick = async () => {
   
   try {
     const device = await navigator.bluetooth.requestDevice({
-      filters: [{ name: "ESP32-Relay" }],
+      acceptAllDevices: true,
       optionalServices: ["12345678-1234-1234-1234-123456789abc"]
     });
     
