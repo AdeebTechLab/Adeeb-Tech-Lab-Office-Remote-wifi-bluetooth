@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ESP32 - Cloud Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="hdr">
+      <div class="top-row">
+        <span class="app-title">ESP32 - CLOUD HUB</span>
+        <span class="clock" id="clock">00:00:00</span>
+      </div>
+
+      <div class="connection-bars">
+        <div class="cloud-signal" id="cloud-pill">
+          <span class="dot"></span>
+          <span>Cloud Signal</span>
+        </div>
+        <button class="ble-btn" id="bleBtn" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/>
+          </svg>
+          <span>Connect BLE</span>
+        </button>
+      </div>
+
+      <div class="sys-bar" id="main-status">
+        System: <span class="pending">Connecting...</span>
+      </div>
+    </header>
+
+    <div class="grid" id="relayGrid"></div>
+
+    <footer class="footer">
+      <button class="all-off-btn" id="killAllBtn" type="button">
+        <svg class="power-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42A6.95 6.95 0 0 1 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.04.88-3.88 2.17-5.17L5.75 5.75A8.96 8.96 0 0 0 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9a8.96 8.96 0 0 0-2.75-6.58z"/>
+        </svg>
+        ALL OFF
+      </button>
+    </footer>
+
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

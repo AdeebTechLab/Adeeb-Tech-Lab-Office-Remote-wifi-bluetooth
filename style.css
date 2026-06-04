@@ -1,0 +1,271 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #121212;
+    --card: #1a1a1a;
+    --border: #2a2a2a;
+    --dim: #555555;
+    --neon: #39ff14;
+    --active-bg: #0d1f0d;
+    --glow: #ffff00;
+    --blue: #3b8ef3;
+    --red: #ff3333;
+    --red-bg: #2a0a0a;
+}
+
+body {
+    background: var(--bg);
+    color: #fff;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    padding: 10px;
+    gap: 8px;
+}
+
+/* ── Header ── */
+.hdr {
+    flex-shrink: 0;
+}
+
+.top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.app-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.clock {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.5px;
+}
+
+.connection-bars {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.cloud-signal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dim);
+    transition: border-color 0.3s, color 0.3s;
+    flex: 1;
+}
+
+.cloud-signal .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--dim);
+    flex-shrink: 0;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.cloud-signal.online {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.cloud-signal.online .dot {
+    background: var(--blue);
+    box-shadow: 0 0 8px var(--blue);
+}
+
+.ble-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 24px;
+    border: 1px solid var(--blue);
+    background: transparent;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.ble-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--blue);
+    transition: fill 0.3s;
+}
+
+.ble-btn.connected {
+    background: var(--blue);
+    color: #fff;
+}
+
+.ble-btn.connected svg {
+    fill: #fff;
+}
+
+.sys-bar {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+.sys-bar .online {
+    color: var(--neon);
+    font-weight: 600;
+}
+
+.sys-bar .pending {
+    color: #f97316;
+}
+
+.sys-bar .error {
+    color: var(--red);
+}
+
+/* ── Relay Grid (2 × 4) ── */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+    flex: 1;
+    min-height: 0;
+}
+
+.relay {
+    background: var(--card);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, transform 0.1s;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    padding: 10px 6px;
+    min-height: 0;
+}
+
+.relay:active {
+    transform: scale(0.96);
+}
+
+.relay-num {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--dim);
+    letter-spacing: 0.8px;
+    transition: color 0.2s;
+}
+
+.relay svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--dim);
+    transition: fill 0.2s;
+}
+
+.relay .label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--dim);
+    text-align: center;
+    transition: color 0.2s;
+}
+
+.relay.active {
+    border-color: var(--neon);
+    background: var(--active-bg);
+    box-shadow: 0 0 12px rgba(57, 255, 20, 0.15);
+}
+
+.relay.active .relay-num {
+    color: var(--neon);
+}
+
+.relay.active svg {
+    fill: var(--glow);
+}
+
+.relay.active .label {
+    color: #ddd;
+}
+
+/* ── Footer ── */
+.footer {
+    flex-shrink: 0;
+}
+
+.all-off-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    background: var(--red-bg);
+    border: 2px solid var(--red);
+    color: var(--red);
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+}
+
+.all-off-btn:active {
+    transform: scale(0.98);
+    background: #3d1010;
+}
+
+.all-off-btn .power-icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--red);
+}
+
+@media (max-width: 380px) {
+    .relay svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .relay .label {
+        font-size: 9px;
+    }
+}
